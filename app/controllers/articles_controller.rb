@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
 
+  # before_action :authenticate_user!, except: [:index, :show]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,7 +19,7 @@ class ArticlesController < ApplicationController
     else
       flash.now[:danger] = "Article has not been created"
       render :new
-    end  
+    end
   end
 
   def show
@@ -26,7 +27,7 @@ class ArticlesController < ApplicationController
 
   def edit
   end
-    
+
   def update
     if @article.update(article_params)
       flash[:success] = "Article has been updated"
